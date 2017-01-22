@@ -19,11 +19,11 @@ class App {
         let input = document.querySelector('.inp');
 
         Rx.Observable.fromEvent(input, 'keyup')
-            // .debounceTime(1000)
+            .debounceTime(400)
             .map(function (e) {
                 return e.target.value;
             })
-            .distinctUntilChanged()
+            // .distinctUntilChanged()
             // .scan(function (prev, current) {
             //     if (prev == null) {
             //         return null;
@@ -32,8 +32,7 @@ class App {
             // }, null)
             .filter(function (text) {
                 // searchText null validation.
-                console.log(text);
-                return text != null
+                return text != null || text != ""
             })
             .subscribe(
                 text => {
