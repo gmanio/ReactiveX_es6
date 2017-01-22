@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "webpack -p --optimize-minimize --config configs/webpack.config.js",
-    "start": "webpack-dev-server --config configs/webpack.config.js"
+    "build": "webpack --progress -p --optimize-minimize --config configs/webpack.config.js",
+    "start": "webpack-dev-server --config configs/webpack.config.js",
+    "check_version":"webpack -v"
   },
   "author": "GmanPark@2017",
   "license": "MIT",
@@ -15,7 +16,6 @@
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
-    "babel-preset-es2015-native-modules": "^6.9.4",
     "uglifyjs": "^2.4.10",
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.2.0"
