@@ -7,6 +7,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+    devtool: 'inline-source-map',
     context: path.resolve(process.cwd(), './src'),
     entry: {
         app: './app.js',
@@ -31,7 +32,11 @@ module.exports = {
         filename: '[name].bundle.js',
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        // enable HMR globally
+
         new webpack.NamedModulesPlugin(),
+        // prints more readable module names in the browser console on HMR updates
         new webpack.LoaderOptionsPlugin({
             minimize: true,
             debug: false
@@ -44,6 +49,7 @@ module.exports = {
     ],
 
     devServer: {
+        hot: true,
         contentBase: path.resolve(process.cwd(), './'),  // New
         index: "src/index.html",
         // the index path for web server

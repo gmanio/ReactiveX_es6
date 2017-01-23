@@ -10,7 +10,6 @@ let searchKeyword = "nike";
 class App {
     constructor() {
         this.attachEvent();
-
         //Init load datas.
         this.requestData();
     }
@@ -88,4 +87,4 @@ class App {
     }
 }
 
-new App();
+export default App;

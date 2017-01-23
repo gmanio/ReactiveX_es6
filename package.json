@@ -4,9 +4,15 @@
   "description": "",
   "scripts": {
     "build": "webpack --progress -p --optimize-minimize --config configs/webpack.config.js",
-    "start": "webpack-dev-server --config configs/webpack.config.js",
-    "check_version":"webpack -v"
+    "dev": "webpack-dev-server --config configs/webpack.dev.js",
+    "check_version": "webpack -v"
   },
+  "keywords": [
+    "es6",
+    "webpack2",
+    "starter",
+    "template"
+  ],
   "author": "GmanPark@2017",
   "license": "MIT",
   "dependencies": {
@@ -16,8 +22,10 @@
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
+    "html-webpack-plugin": "^2.26.0",
     "uglifyjs": "^2.4.10",
     "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.0"
+    "webpack-dev-server": "^2.2.0",
+    "webpack-merge": "^2.4.0"
   }
 }
