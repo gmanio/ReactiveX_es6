@@ -30,14 +30,14 @@ class App {
             //     }
             //     return current;
             // }, null)
-            .filter(function (text) {
-                // searchText null validation.
-                return text != null || text != ""
-            })
+            // .filter(function (text) {
+            //     // searchText null validation.
+            //     return text != null || text != ""
+            // })
             .subscribe(
                 text => {
                     this.searchKeyword = text;
-                    if (text != null) {
+                    if (text != null || text != "") {
                         this.requestData();
                     }
                 },

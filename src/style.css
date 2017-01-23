@@ -18,10 +18,9 @@ input:focus{ outline:none; }
 table{ border-spacing:0; border-collapse:collapse; table-layout:fixed; }
 :focus{ outline:0; }
 /*textarea, input[type="text"], input[type="number"], input[type="password"], input[type="button"], input[type="submit"], input[type="reset"], input[type="email"], input[type="srch"], input[type="tel"]{ -webkit-appearance:none; -webkit-border-radius:0; border:1px solid #ababab; }*/
-label, input[type="radio"], input[type="checkbox"]{ vertical-align:middle; }
+/*label, input[type="radio"], input[type="checkbox"]{ vertical-align:middle; }*/
 button{ *overflow:visible; overflow:hidden; background-color:transparent; border:none; cursor:pointer; text-align:center; }
 .blind, .skip{ visibility:hidden; overflow:hidden; position:absolute; left:-1000em; width:0; height:0; font-size:0; line-height:0; }
-
 /* Material Google Icon */
 @font-face{
     font-family:'Material Icons';
@@ -29,7 +28,6 @@ button{ *overflow:visible; overflow:hidden; background-color:transparent; border
     font-weight:400;
     src:local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v19/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
 }
-
 .material-icons{
     font-family:'Material Icons';
     font-weight:normal;
@@ -45,60 +43,57 @@ button{ *overflow:visible; overflow:hidden; background-color:transparent; border
     -webkit-font-feature-settings:'liga';
     -webkit-font-smoothing:antialiased;
 }
-
-
 /**
     search Header
  */
-.search-box {
-    -webkit-transition: width 0.6s, border-radius 0.6s, background 0.6s, box-shadow 0.6s;
-    transition: width 0.6s, border-radius 0.6s, background 0.6s, box-shadow 0.6s;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    background: #ebebeb;
+.wrap_search{ position:relative; padding:10px; }
+.search-box{
+    -webkit-transition:width 0.6s, border-radius 0.6s, background 0.6s, box-shadow 0.6s;
+    transition:width 0.6s, border-radius 0.6s, background 0.6s, box-shadow 0.6s;
+    width:40px;
+    height:40px;
+    border-radius:20px;
+    border:none;
+    cursor:pointer;
+    background:#ebebeb;
 }
-.search-box + label .search-icon {
-    color: black;
+.search-box + label .search-icon{
+    color:black;
 }
-.search-box:hover {
-    color: white;
-    background: #c8c8c8;
-    box-shadow: 0 0 0 5px #3d4752;
+.search-box:hover{
+    color:white;
+    background:#c8c8c8;
+    box-shadow:0 0 0 5px #3d4752;
 }
-.search-box:hover + label .search-icon {
-    color: white;
+.search-box:hover + label .search-icon{
+    color:white;
 }
-.search-box:focus {
-    -webkit-transition: width 0.6s cubic-bezier(0, 1.22, 0.66, 1.39), border-radius 0.6s, background 0.6s;
-    transition: width 0.6s cubic-bezier(0, 1.22, 0.66, 1.39), border-radius 0.6s, background 0.6s;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    padding-left: 15px;
-    cursor: text;
-    width: 300px;
-    border-radius: auto;
-    background: #ebebeb;
-    color: black;
+.search-box:focus{
+    -webkit-transition:width 0.6s cubic-bezier(0, 1.22, 0.66, 1.39), border-radius 0.6s, background 0.6s;
+    transition:width 0.6s cubic-bezier(0, 1.22, 0.66, 1.39), border-radius 0.6s, background 0.6s;
+    border:none;
+    outline:none;
+    box-shadow:none;
+    padding-left:15px;
+    cursor:text;
+    width:70%;
+    border-radius:auto;
+    background:#ebebeb;
+    color:black;
 }
-.search-box:focus + label .search-icon {
-    color: black;
+.search-box:focus + label .search-icon{
+    color:#ff4500;
 }
-.search-box:not(:focus) {
-    text-indent: -5000px;
+.search-box:not(:focus){
+    text-indent:-5000px;
 }
-
-#search-submit {
-    position: relative;
-    left: -5000px;
+#search-submit{
+    position:relative;
+    left:-5000px;
 }
-
-.search-icon {
-    position: relative;
-    left: -30px;
-    color: white;
-    cursor: pointer;
+.search-icon{
+    position:relative;
+    left:-30px;
+    color:white;
+    cursor:pointer;
 }

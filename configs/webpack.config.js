@@ -31,6 +31,7 @@ module.exports = {
         filename: '[name].bundle.js',
     },
     plugins: [
+        new webpack.NamedModulesPlugin(),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
             debug: false
