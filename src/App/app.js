@@ -5,13 +5,13 @@
 import Rx from 'rxjs/Rx';
 
 const AppKey = 'f0c12da8-2ef4-3e24-8815-e2f347909a80';
-let searchKeyword = "nike";
 
 export class App {
     constructor() {
+        this.searchKeyword = "nike";
         this.attachEvent();
         //Init load datas.
-        this.requestData();
+        // this.requestData();
     }
 
     attachEvent() {
@@ -19,43 +19,46 @@ export class App {
 
         Rx.Observable.fromEvent(input, 'keyup')
             .debounceTime(400)
-            .map(function (e) {
-                return e.target.value;
+            .distinctUntilChanged()
+            .scan(function (prev, current) {
+                if (prev == null) {
+                    return null;
+                }
+                return current;
             })
-            // .distinctUntilChanged()
-            // .scan(function (prev, current) {
-            //     if (prev == null) {
-            //         return null;
-            //     }
-            //     return current;
-            // }, null)
-            // .filter(function (text) {
-            //     // searchText null validation.
-            //     return text != null || text != ""
-            // })
-            .subscribe(
-                text => {
+            .filter((e) => {
+                let text = e.target.value;
+
+                if(text != null && text != ""){
+                    // searchText null validation.
                     this.searchKeyword = text;
-                    if (text != null || text != "") {
-                        this.requestData();
-                    }
+                    return text;
+                }
+            })
+            .subscribe(
+                () => {
+                    debugger;
+                    this.requestData();
                 },
                 (err) => {
                     console.log(err);
+                },
+                () => {
+                    console.log("complete");
                 }
             );
     }
 
     requestData() {
-        Rx.Observable
-            .ajax({
-                url: 'http://apis.skplanetx.com/11st/v2/common/products?appKey=' + AppKey + '&searchKeyword=' + this.searchKeyword + '&sortCode=A',
-                crossDomain: true,
-                headers: {
-                    "Content-type": "application/json",
-                    "Accept": "application/json"
-                }
-            })
+        console.log("request");
+        Rx.Observable.ajax({
+            url: 'http://apis.skplanetx.com/11st/v2/common/products?appKey=' + AppKey + '&searchKeyword=' + this.searchKeyword + '&sortCode=A',
+            crossDomain: true,
+            headers: {
+                "Content-type": "application/json",
+                "Accept": "application/json"
+            }
+        })
             .retry(3)
             .map(e => e.response)
             .map(e => {

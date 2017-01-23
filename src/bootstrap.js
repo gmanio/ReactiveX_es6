@@ -10,7 +10,7 @@ import {App} from './App';
  */
 
 function main() {
-    document.title = 'Loading...';
+    document.title = 'RxJS';
 
     const app = new App();
 }
