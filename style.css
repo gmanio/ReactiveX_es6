@@ -77,7 +77,7 @@ button{ *overflow:visible; overflow:hidden; background-color:transparent; border
     padding-left:15px;
     cursor:text;
     width:70%;
-    border-radius:auto;
+    /*border-radius:auto;*/
     background:#ebebeb;
     color:black;
 }

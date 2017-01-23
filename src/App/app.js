@@ -7,7 +7,7 @@ import Rx from 'rxjs/Rx';
 const AppKey = 'f0c12da8-2ef4-3e24-8815-e2f347909a80';
 let searchKeyword = "nike";
 
-class App {
+export class App {
     constructor() {
         this.attachEvent();
         //Init load datas.
@@ -86,5 +86,3 @@ class App {
             );
     }
 }
-
-export default App;

@@ -3,13 +3,13 @@
  * @author: Gman Park
  */
 
-import App from 'app/app';
+import {App} from './App';
 
 /**
  * entrance code for SPA
  */
 
-function main(){
+function main() {
     document.title = 'Loading...';
 
     const app = new App();

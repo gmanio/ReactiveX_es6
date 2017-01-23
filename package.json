@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "webpack --progress -p --optimize-minimize --config configs/webpack.config.js",
     "dev": "webpack-dev-server --config configs/webpack.dev.js",
     "check_version": "webpack -v"
   },
