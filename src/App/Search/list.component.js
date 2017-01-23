@@ -10,20 +10,30 @@ export default class SearchList {
 
     cachedElement(){
         this.listWrapper = document.querySelector('.item_list');
+        this.listTemplate =  document.querySelector('#tmpl_item');
+        this.listItemImage = this.listTemplate.content.querySelector('img');
+        this.listItemRating = this.listTemplate.content.querySelector('.rating');
+        this.listItemPrice = this.listTemplate.content.querySelector('.price');
+        this.listItemProductName = this.listTemplate.content.querySelector('.name');
+        this.listItemSeller = this.listTemplate.content.querySelector('.seller');
+        this.listItemSellerGrade = this.listTemplate.content.querySelector('.grade');
     }
 
     render(res){
         this.listWrapper.innerHTML = "";
 
-        for (var i = 0; i < res.length; i++) {
-
+        for (let item of res){
             // Html5 <template> import
-            let template = document.querySelector('#tmpl_item');
-            let elImg = template.content.querySelector('img');
-            elImg.src = res[i].ProductImage;
+            console.log(item);
+            this.listItemImage.src = item.ProductImage;
+            this.listItemRating.innerHTML = item.BuySatisfy;
+            this.listItemPrice.innerHTML = item.ProductPrice;
+            this.listItemProductName.innerHTML = item.ProductName;
+            this.listItemSeller.innerHTML = item.SellerNick;
+            this.listItemSellerGrade.innerHTML = item.SellerGrd;
 
-            let clone = document.importNode(template.content, true);
-            this.listWrapper.appendChild(clone);
+            let cloneElement = document.importNode(this.listTemplate.content, true);
+            this.listWrapper.appendChild(cloneElement);
         }
     }
 }

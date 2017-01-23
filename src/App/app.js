@@ -7,8 +7,8 @@
 import SearchComponent from './Search/search.component';
 
 export class App {
-
     constructor() {
+        // init searchModule
         this.oSearchComponent = new SearchComponent({
             searchKeyword: 'nike'
         });

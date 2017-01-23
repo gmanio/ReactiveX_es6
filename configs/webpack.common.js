@@ -4,6 +4,7 @@
  */
 
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -29,25 +30,13 @@ module.exports = {
                 loader: 'file',
             },
             {
-                test: /\.scss$/,
-                use: [
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 2,
-                            modules: true,
-                            localIdentName: '[name]__[local]'
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            outputStyle: 'expanded',
-                            sourceMap: true,
-                            sourceMapContents: true
-                        }
-                    }
-                ]
+                test: /\.css$/,
+                use: [{
+                    loader: ExtractTextPlugin.extract({
+                        fallbackLoader: "style-loader",
+                        loader: "css-loader"
+                    })
+                }]
             }
         ]
     },
@@ -55,6 +44,8 @@ module.exports = {
         new CommonsChunkPlugin({
             name: ['app'],
             minChunks: Infinity
-        })
+        }),
+
+        new ExtractTextPlugin("customStyle.css")
     ]
 };

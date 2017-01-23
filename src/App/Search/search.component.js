@@ -7,25 +7,23 @@ import Rx from 'rxjs/Rx';
 
 import SearchList from './list.component';
 
+// API key for fetch data.
 const AppKey = 'f0c12da8-2ef4-3e24-8815-e2f347909a80';
 
 export default class SearchComponent {
     constructor(searchKeyword) {
-        if (searchKeyword) {
-            this.searchKeyword = searchKeyword;
-        }
-
+        // initialized searchList Component
         this.oSearchList = new SearchList();
 
-        this.attachEvent();
+        // setting default keyword
+        this.searchKeyword = searchKeyword ? searchKeyword : 'nike';
 
+        this.attachEvent();
         this.search();
     }
 
     attachEvent() {
-        let input = document.querySelector('.inp');
-
-        Rx.Observable.fromEvent(input, 'keyup')
+        Rx.Observable.fromEvent(document.querySelector('.inp'), 'input')
             .debounceTime(400)
             .distinctUntilChanged()
             .scan(function (prev, current) {
@@ -44,14 +42,13 @@ export default class SearchComponent {
                 }
             })
             .subscribe(
+                // success
                 () => {
                     this.search();
                 },
+                // fail
                 (err) => {
                     console.log(err);
-                },
-                () => {
-                    console.log("complete");
                 }
             );
     }
