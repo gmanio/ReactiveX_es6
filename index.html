@@ -14,21 +14,30 @@
     </head>
 </head>
 <body>
-<div class="wrap_header">
+<div id="wrap">
+    <div class="header">
+        <div class="wrap_search">
+            <input id="search-box" type="text" class="inp search-box" name="q" />
+            <label for="search-box"><i class="material-icons">search</i></label>
+            <input type="submit" id="search-submit" />
+        </div>
+    </div>
+    <div class="content">
+        <ul class="item_list">
+            <!-- HTML5 <template> inserted here. -->
+        </ul>
+    </div>
+</div>
+
+<!-- HTML5 Templates -->
+<template id="tmpl_header">
     <div class="wrap_search">
         <input id="search-box" type="text" class="inp search-box" name="q" />
         <label for="search-box"><i class="material-icons">search</i></label>
         <input type="submit" id="search-submit" />
     </div>
-</div>
-<div class="content">
-    <ul class="item_list">
-        <!-- HTML5 <template> inserted here. -->
-    </ul>
-</div>
+</template>
 
-
-<!-- HTML5 Templates -->
 <template id="tmpl_item">
     <li class="item">
         <img src="" width="100" height="100">
@@ -36,6 +45,5 @@
 </template>
 <!-- // HTML5 Templates -->
 
-<!--<script src="dist/app.bundle.js"></script>-->
 </body>
 </html>

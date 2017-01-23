@@ -8,7 +8,7 @@ module.exports = {
         target: 'http://apis.skplanetx.com/11st/v2/common/products',
         secure: true,
         headers: {
-            'Host': 'api.github.com',
+            'Host': 'gman.io',
             'Cookie': '' // send cookie on demand
         },
         pathRewrite: function (path) {
