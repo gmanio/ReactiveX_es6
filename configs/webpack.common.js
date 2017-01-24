@@ -2,13 +2,15 @@
  * Created on 2017-01-23.
  * @author: Gman Park
  */
+const path = require('path');
 
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
+    context: path.resolve(process.cwd(), './src'),
     entry: {
-        'app': ['./src/bootstrap.js']
+        'app': ['./bootstrap.js']
     },
     resolve: {
         extensions: ['.js', '.scss'],
@@ -19,7 +21,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: ['babel-loader']
+                use: [{
+                    loader: 'babel-loader',
+                    options: {presets: ['es2015']}
+                }]
             },
             {
                 test: /\.json$/,
@@ -31,12 +36,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [{
-                    loader: ExtractTextPlugin.extract({
-                        fallbackLoader: "style-loader",
-                        loader: "css-loader"
-                    })
-                }]
+                loader: "style-loader!css-loader"
             }
         ]
     },
@@ -46,6 +46,9 @@ module.exports = {
             minChunks: Infinity
         }),
 
-        new ExtractTextPlugin("customStyle.css")
+        new ExtractTextPlugin({
+            filename: '[name].bundle.css',
+            allChunks: true,
+        }),
     ]
 };

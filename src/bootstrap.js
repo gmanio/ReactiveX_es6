@@ -2,7 +2,7 @@
  * Created on 2017-01-23.
  * @author: Gman Park
  */
-
+import styles from '../assets/style.css';
 import {App} from './App';
 
 /**

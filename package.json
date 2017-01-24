@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "build": "webpack --config configs/webpack.build.js",
     "dev": "webpack-dev-server --config configs/webpack.dev.js",
     "check_version": "webpack -v"
   },
@@ -26,6 +27,7 @@
     "html-webpack-plugin": "^2.26.0",
     "node-sass": "^4.3.0",
     "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
     "uglifyjs": "^2.4.10",
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.2.0",
