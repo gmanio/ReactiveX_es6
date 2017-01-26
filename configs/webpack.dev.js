@@ -29,8 +29,8 @@ module.exports = webpackMerge(webpackCommon, {
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            template: path.resolve(__dirname, '../index.html'),
-            favicon: path.resolve(__dirname, '../assets/rx.png')
+            template: path.resolve(process.cwd(), 'src/index.html'),
+            favicon: path.resolve(process.cwd(), 'assets/rx.png'),
         })
     ],
 
