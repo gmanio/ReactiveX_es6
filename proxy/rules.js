@@ -4,7 +4,11 @@
  */
 
 module.exports = {
-    '/11st/api': {
+    /**
+     * 11st search API proxy
+     */
+    '/11st/search': {
+        //'http://apis.skplanetx.com/11st/v2/common/products?appKey=' + AppKey + '&searchKeyword=' + this.searchKeyword + '&sortCode=A'
         target: 'http://apis.skplanetx.com/11st/v2/common/products',
         secure: true,
         headers: {
