@@ -11,15 +11,15 @@ import SearchList from './list.component';
 const AppKey = 'f0c12da8-2ef4-3e24-8815-e2f347909a80';
 
 export default class SearchComponent {
-    constructor(searchKeyword) {
+    constructor(htOption) {
         // initialized searchList Component
         this.oSearchList = new SearchList();
 
         // setting default keyword
-        this.searchKeyword = searchKeyword ? searchKeyword : 'nike';
+        this.searchKeyword = htOption.searchKeyword ? htOption.searchKeyword : 'javascript';
 
         this.attachEvent();
-        this.search();
+        this.search();  // init search
     }
 
     attachEvent() {
@@ -42,13 +42,11 @@ export default class SearchComponent {
                 }
             })
             .subscribe(
-                // success
                 () => {
-                    this.search();
+                    this.search();                    // success
                 },
-                // fail
                 (err) => {
-                    console.log(err);
+                    console.log(err);                    // fail
                 }
             );
     }
@@ -57,10 +55,7 @@ export default class SearchComponent {
         Rx.Observable.ajax({
             url: 'http://apis.skplanetx.com/11st/v2/common/products?appKey=' + AppKey + '&searchKeyword=' + this.searchKeyword + '&sortCode=A',
             crossDomain: true,
-            headers: {
-                "Content-type": "application/json",
-                "Accept": "application/json"
-            }
+            headers: {"Content-type": "application/json", "Accept": "application/json"}
         })
             .retry(3)
             .map(e => e.response)
@@ -71,7 +66,9 @@ export default class SearchComponent {
             })
             .subscribe(
                 (res) => {
-                    this.oSearchList.render(res);
+                    if (res.length != 0) {
+                        this.oSearchList.render(res);
+                    }
                 },
                 (err) => {
                     console.log(err);

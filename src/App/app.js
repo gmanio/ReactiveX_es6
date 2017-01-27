@@ -8,9 +8,11 @@ import SearchComponent from './Search/search.component';
 
 export class App {
     constructor() {
+        let options = {
+            searchKeyword: 'javascript'
+        }
+
         // init searchModule
-        this.oSearchComponent = new SearchComponent({
-            searchKeyword: 'nike'
-        });
+        this.oSearchComponent = new SearchComponent(options);
     }
 }
