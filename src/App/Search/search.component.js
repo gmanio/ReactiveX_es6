@@ -18,8 +18,17 @@ export default class SearchComponent {
         // setting default keyword
         this.searchKeyword = htOption.searchKeyword ? htOption.searchKeyword : 'javascript';
 
+        this.insertHeader();
         this.attachEvent();
         this.search();  // init search
+    }
+
+    insertHeader() {
+        let headerWrapper = document.querySelector('.header');
+        let header = document.querySelector('#tmpl_header');
+
+        let cloneElement = document.importNode(header.content, true);
+        headerWrapper.appendChild(cloneElement);
     }
 
     attachEvent() {
