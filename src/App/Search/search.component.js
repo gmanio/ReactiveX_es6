@@ -70,13 +70,7 @@ export default class SearchComponent {
             .map(e => e.response)
             .map(e => {
                 if (e.hasOwnProperty('ProductSearchResponse')) {
-                    return e.ProductSearchResponse.Products;
-                }
-            })
-            .flatMap((data) => {
-                if (parseInt(data.TotalCount) == 0) {
-                    alert('Data가 없습니다.');
-                    return Rx.Observable.empty(); // go to subscribe complete.
+                    return e.ProductSearchResponse.Products.Product;
                 }
             })
             .subscribe(
@@ -87,9 +81,6 @@ export default class SearchComponent {
                 },
                 (err) => {
                     console.log(err);
-                },
-                () => {
-                    console.log('complete');
                 }
             );
     }
