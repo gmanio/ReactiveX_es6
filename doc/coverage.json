@@ -1,0 +1,48 @@
+{
+  "coverage": "4.16%",
+  "expectCount": 24,
+  "actualCount": 1,
+  "files": {
+    "src/App/app.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        9,
+        10,
+        16,
+        21
+      ]
+    },
+    "src/App/Search/search.component.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        13,
+        34,
+        14,
+        26,
+        16,
+        63,
+        19
+      ]
+    },
+    "src/App/Search/list.component.js": {
+      "expectCount": 13,
+      "actualCount": 1,
+      "undocumentLines": [
+        11,
+        7,
+        15,
+        21,
+        17,
+        18,
+        16,
+        19,
+        20,
+        13,
+        12,
+        24
+      ]
+    }
+  }
+}
