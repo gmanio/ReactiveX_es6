@@ -34,7 +34,6 @@ export default class SearchComponent {
     attachEvent() {
         Rx.Observable.fromEvent(document.querySelector('.inp'), 'input')
             .debounceTime(400)
-            .distinctUntilChanged()
             .scan(function (prev, current) {
                 if (prev == null) {
                     return null;
