@@ -20,7 +20,7 @@ export default class SearchComponent {
 
         this.insertHeader();
         this.attachEvent();
-        this.search();  // init search
+        // this.search();  // init search
     }
 
     insertHeader() {
@@ -32,7 +32,9 @@ export default class SearchComponent {
     }
 
     attachEvent() {
-        Rx.Observable.fromEvent(document.querySelector('.inp'), 'input')
+        this.subject = new Rx.Subject();
+
+        this.source = Rx.Observable.fromEvent(document.querySelector('.inp'), 'keyup')
             .debounceTime(400)
             .scan(function (prev, current) {
                 if (prev == null) {
@@ -48,15 +50,15 @@ export default class SearchComponent {
                     this.searchKeyword = text;
                     return text;
                 }
-            })
-            .subscribe(
-                () => {
-                    this.search();                    // success
-                },
-                (err) => {
-                    console.log(err);                    // fail
-                }
-            );
+            }).multicast(() => this.subject);
+
+
+        this.subject.subscribe((x)=>{
+            console.log('Next: ' + x);
+        });
+
+        this.source.connect();
+
     }
 
     search() {
